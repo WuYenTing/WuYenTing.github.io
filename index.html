@@ -5,11 +5,11 @@
     <meta name="viewport" content="width=device-width" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com"> 
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
-    <link href="https://fonts.googleapis.com/css2?family=Rubik:ital@1&display=swap" rel="stylesheet">
-    <link >
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700&display=swap" rel="stylesheet">
+    <script src="js/script.js" defer></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script> 
     <style type="text/css">
       body
       {
@@ -22,13 +22,63 @@
     </style>
   </head>
   <body>
-    <div style="text-align: center;"> 
-      <svg width="200" height="200"> 
-      <rect x="20" y="20" rx="20" ry="20" width="150" height="150" style="fill:rgb(223, 213, 213); stroke:black; stroke-width:5; opacity:0.1" />
-    </div>  
-    <div class="flex">
-      <img src="https://openweathermap.org/img/wn/04d.png" alt="" class="icon" />
-      <div class="description">多雲</div>
+    <div id="loading"></div>
+    <div class="cont">
+      <div class="zero" style="text-align: center;">
+        <svg width="400" height="70"> 
+          <rect x="0" y="0" rx="20" ry="20" width="400" height="50" style="fill:transparent;"/>      
+        </svg>
+      </div>
+      <div class="one" style="text-align: center;">
+        <svg width="400" height="200"> 
+          <rect x="0" y="0" rx="20" ry="20" width="400" height="50" style="fill:rgb(223, 213, 213); opacity:0.1"/> 
+            <text style="fill:rgb(184, 250, 228);" font-size="36" font-family="Verdana" x="130" y="40" >Weather</text>      
+        </svg>
+      </div>
     </div>
+    <div class="two">
+      <div class="card" style="text-align: center;">
+        <div class="weather loading">
+          <form action="/action_page.php">
+            <label for="city" >Choose a city:</label>
+            <select id="city" name="city">
+              <option value="Taipei">Taipei</option>
+              <option value="saab">Saab</option>
+              <option value="fiat" selected>Fiat</option>
+              <option value="audi">Audi</option>
+            </select>
+            <input type="submit">
+          </form>
+          <div class="flex">
+            <img src="picture/forecast.png" alt="" class="icon" height="100" width="100" style="opacity: 0.8;"/>
+            <div class="description">多云</div>
+          </div>
+          <div class="other">
+            <div class="humidity">湿度: 60%</div>
+            <div class="wind">风速: 6.2 km/h</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+        var preloader = document.getElementById('loading');
+        function myFunction() {
+            preloader.style.display = 'none';
+        }
+    </script>
+    <script type="text/javascript" src="js/vanilla-tilt.js"></script>
+    <script type="text/javascript">
+        VanillaTilt.init(document.querySelector(".card"), {
+            max: 15,
+            glare: true,
+            reverse: true,
+            "max-glare": 0.5,
+            speed: 400
+        });
+        VanillaTilt.init(document.querySelectorAll(".card"));
+    </script>
+    <div style="text-align: center;"> 
+      
+    </div>  
   </body>      
 </html>
