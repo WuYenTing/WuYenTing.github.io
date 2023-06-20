@@ -10,67 +10,68 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,400;0,500;0,600;0,700;0,800;0,900;1,800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="CSS/style.css">
     <script src="js/script.js" defer></script>
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script> 
-    <style type="text/css">
-      body
-      {
-        background-image: url("picture/taipei101.jpg");
-        background-repeat: no-repeat;
-        background-attachment: fixed;
-        background-position: center;
-        background-size: cover
-      } 
-    </style>
-  </head>
-  <body>    
-    <div class="cont">
-      <div class="zero" style="text-align: center;">
-        <svg width="400" height="70"> 
-          <rect x="0" y="0" rx="20" ry="20" width="400" height="50" style="fill:transparent;"/>      
-        </svg>
-      </div>
-      <div class="one" style="text-align: center;">
-        <svg width="400" height="200"> 
-          <rect x="0" y="0" rx="20" ry="20" width="400" height="50" style="fill:rgb(223, 213, 213); opacity:0.1"/> 
-            <text style="fill:rgb(184, 250, 228);" font-size="36" font-family="Verdana" x="130" y="40" >Weather</text>      
-        </svg>
-      </div>
-    </div>
-    <div class="two">
-      <div class="card" style="text-align: center;">
-        
-        <div class="weather loading">
-          <text style="fill:rgb(0, 38, 25);" font-size="48" >Place</text>
-          <div class="flex">
-            <img src="picture/forecast.png" alt="" class="icon" height="100" width="100" style="opacity: 0.8;"/>
-            <div class="description">多云</div>
-          </div>
-          <div class="other">
-            <div class="humidity">湿度: 60%</div>
-            <div class="wind">风速: 6.2 km/h</div>
-          </div>
-        </div>
-      </div>
-    </div>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script>
-        var preloader = document.getElementById('loading');
-        function myFunction() {
-            preloader.style.display = 'none';
-        }
+      $.ajax({
+          url:'https://opendata.cwb.gov.tw/api/v1/rest/datastore/F-C0032-001?Authorization=CWB-1ED588D9-6FA7-4767-9C73-350D6A7B0401',
+          method: "GET",
+          datatype:"json",
+          success: function(res){
+            data = res.records.locations[0];
+            console.log(data);
+            city = data.location;
+            console.log(city);
+            todayWeather(data, cityNum);
+            selectCity(city);
+            weekWeather(data, cityNum);
+          }
+      })
     </script>
-    <script type="text/javascript" src="js/vanilla-tilt.js"></script>
-    <script type="text/javascript">
-        VanillaTilt.init(document.querySelector(".card"), {
-            max: 15,
-            glare: true,
-            reverse: true,
-            "max-glare": 0.5,
-            speed: 400
-        });
-        VanillaTilt.init(document.querySelectorAll(".card"));
-    </script>
-    <div style="text-align: center;"> 
+  </head>
+  <body> 
       
+    <div class="one" >
+      <div class="city" >
+        <p>Taipei</p>
+      </div>  
+    </div>
+    <div class="two" >
+      <div class="week">
+        <div class="day">
+          <div id="Mon">Mon</div>    
+          <div class="icon"></div>     
+        </div>
+        <div class="day">
+          <div id="Tues">Tue</div>
+          <div class="icon"></div>
+        </div>  
+        <div class="day">
+          <div id="Wed">Wed</div>
+          <div class="icon"></div>
+        </div>
+        <div class="day">
+          <div id="Thu">Thu</div>
+          <div class="icon"></div>
+        </div>  
+        <div class="day">
+          <div id="Fri">Fri</div>
+          <div class="icon"></div>
+        </div>  
+        <div class="day">
+          <div id="Sat">Sat</div>
+          <div class="icon"></div>
+        </div>  
+        <div class="day">
+          <div id="Sun">Sun</div>
+          <div class="icon"></div>
+        </div>  
+      </div>
     </div>  
+    <div class="three">
+      <script>
+        console.log('js/36')
+      </script>  
+    </div>   
   </body>      
 </html>
+
