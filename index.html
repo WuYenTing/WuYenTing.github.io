@@ -8,7 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,400;0,500;0,600;0,700;0,800;0,900;1,800&display=swap" rel="stylesheet">
-    
+    <link rel="stylesheet" href="CSS/style.css">
     <script src="js/script.js" defer></script>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script> 
     <style type="text/css">
@@ -22,8 +22,7 @@
       } 
     </style>
   </head>
-  <body>
-    <div id="loading"></div>
+  <body>    
     <div class="cont">
       <div class="zero" style="text-align: center;">
         <svg width="400" height="70"> 
@@ -39,29 +38,9 @@
     </div>
     <div class="two">
       <div class="card" style="text-align: center;">
+        
         <div class="weather loading">
-          <form action="/action_page.php">
-            <label for="city" >Choose a city:</label>
-            <select id="city" name="city">
-              <option value="Keelung City">Keelung City</option>
-              <option value="New Taipei City">New Taipei City</option>
-              <option value="Taipei City">Taipei City</option>
-              <option value="Taoyuan City">Taoyuan City</option>
-              <option value="Hsinchu County">Hsinchu County</option>
-              <option value="Hsinchu City">Hsinchu City</option>
-              <option value="Miaoli City">Miaoli City</option>
-              <option value="Miaoli County">Miaoli County</option>
-              <option value="Taichung City">Taichung City</option>
-              <option value="Changhua County">Changhua County</option>
-              <option value="Changhua City">Changhua City</option>
-              <option value="Nantou County">Nantou County</option>
-              <option value="Nantou City">Nantou City</option>
-              <option value=""></option>
-              <option value=""></option>
-              <option value=""></option>
-            </select>
-            <input type="submit">
-          </form>
+          <text style="fill:rgb(0, 38, 25);" font-size="48" >Place</text>
           <div class="flex">
             <img src="picture/forecast.png" alt="" class="icon" height="100" width="100" style="opacity: 0.8;"/>
             <div class="description">多云</div>

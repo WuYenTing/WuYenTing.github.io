@@ -20,11 +20,11 @@ body {
   position: fixed;
   width: 100%;
   height: 100vh;
-  background: #ffffff url("/loading.svg") no-repeat center;
+  background: #ffffff89 url("/loading.svg") no-repeat center;
   z-index: 99999;
 }
 
-.cont {
+.cont { 
   display: flex;
   justify-content: center;
   align-items: center;
@@ -32,11 +32,12 @@ body {
 }
 
 .one {
+  position: fixed;
   margin-top: 1.5em;
   padding: 15px;
   display: inline-block;
   font-size: 20px;
-  box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.8);
+  box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.7);
   overflow: hidden;
   border-radius: 25px;
   border-top: 2px solid rgba(255, 255, 255, 0.5);
