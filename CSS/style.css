@@ -21,9 +21,9 @@ body {
   align-items: center;
   box-sizing: border-box;
   margin: auto;
-  opacity: 0.7;
+  opacity: 0.8;
   padding: 120px;
-  background-color: aliceblue;
+  //background-color: aliceblue;
 }
 
 .city {
@@ -52,13 +52,13 @@ body {
   box-sizing: border-box;
   margin: auto;
   padding: 40px;
-  background-color: rgba(22, 107, 181, 0.282);
+  //background-color: rgba(231, 240, 248, 0.389);
+  
 }
 
 .week {
   margin: 2.5px;
   padding: 2.5px;
-  border: 0px;
   display: flex;
   text-align: center;
   font-size: 20px;
@@ -70,29 +70,42 @@ body {
   border-right: 2px solid rgba(255, 255, 255, 0.5);
   border-bottom: 2px solid rgba(255, 255, 255, 0.5);
   background-image: linear-gradient(0deg, #0006040a 0%, #8fd2f44d 100%);
-  width: 640px;
+  width: 670px;
   height: 300px;
-  background-color: rgba(254, 5, 187, 0.138);
+  //background-color: rgba(254, 5, 187, 0.138);
+  
 }
 
 .day {
   margin: 2.5px;
   padding: 5px;
   background-color: rgba(0, 0, 255, 0.232);
+  background-image: linear-gradient(180deg, #85f4fe72 20%, #f4e08f87 80%);
   border-radius: 15px;
   width: 90px;
   height: 290px;
-  color:rgb(167, 13, 209);
+  color:rgb(0, 0, 0);
+  font-weight: 600;
   
 }
 
 .icon {
-  background-image: url(../picture/forecast.png);
+  padding: 15px;
+  text-align: center;
+  font-size: 48px;
+  align-items: center;
+  background-size: cover;
+  //background-color: rgba(0, 0, 0, 0.146);
   background-repeat: no-repeat;
-  background-attachment: fixed;
   background-position: center;
+  width: 80px;
+  height: 80px;
 }
 
 .three{
   background-color: rgb(246, 8, 8);
+}
+
+#sunny {  
+ background: ('../picture/forecast.png');
 }
