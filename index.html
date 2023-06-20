@@ -11,22 +11,7 @@
     <link rel="stylesheet" href="CSS/style.css">
     <script src="js/script.js" defer></script>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script>
-      $.ajax({
-          url:'https://opendata.cwb.gov.tw/api/v1/rest/datastore/F-C0032-001?Authorization=CWB-1ED588D9-6FA7-4767-9C73-350D6A7B0401',
-          method: "GET",
-          datatype:"json",
-          success: function(res){
-            data = res.records.locations[0];
-            console.log(data);
-            city = data.location;
-            console.log(city);
-            todayWeather(data, cityNum);
-            selectCity(city);
-            weekWeather(data, cityNum);
-          }
-      })
-    </script>
+    
   </head>
   <body> 
       
