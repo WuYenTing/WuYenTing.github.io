@@ -5,6 +5,10 @@ function apidata() {
         datatype:"json",
         success: function(res){
             console.log(res);
+            data = res.records.locations[0].location[lacationnum].weatherElement;
+            data1 = res.records.locations[0].location;
+            console.log(res.records.locations[0].location[lacationnum].locationName);
+            console.log(data);
         }
-        });
+    });
 }
