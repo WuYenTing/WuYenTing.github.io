@@ -5,7 +5,7 @@ function apidata() {
         datatype: "json",
         success: function(res){
             console.log(res);
-        }
+        } //
     });
 };
 
