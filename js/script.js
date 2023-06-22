@@ -5,9 +5,9 @@ function apidata() {
         datatype:"json",
         success: function(res){
             data = res.records.locations[0];
-            // console.log(data);
+            console.log(data);
             city = data.location;
-            // console.log(city);
+            console.log(city);
         }
     });
 }
