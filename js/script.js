@@ -3,6 +3,7 @@ function apidata() {
         url:'https://opendata.cwb.gov.tw/api/v1/rest/datastore/F-C0032-001?Authorization=CWB-930C6111-767C-4BCF-A977-B55FED47B943&format=JSON&locationName=%E6%96%B0%E7%AB%B9%E5%B8%82&sort=time',
         method: "GET",
         datatype: "json",
+        async: false,
         success: function(res){
             console.log(res);
         }
