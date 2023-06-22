@@ -9,6 +9,6 @@ function mainstream(lacationnum){
         data1 = res.records.locations[0].location;
         console.log(res.records.locations[0].location[lacationnum].locationName);
         console.log(data);
-    }    
+        }    
     });
 };
