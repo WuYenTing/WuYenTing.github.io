@@ -1,107 +1,44 @@
-* {
-  margin: 0;
-  padding: 0;
-  justify-content: center;
-  align-items: center;
-  box-sizing: border-box;
-  font-family: "Gill Sans", sans-serif;;
-}
- 
-body {
-  background-image: url("../picture/taipei101.jpg");
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-position: center;
-  background-size: cover
-}
 
-.one {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  box-sizing: border-box;
-  margin: auto;
-  opacity: 0.8;
-  padding: 120px;
-  //background-color: aliceblue;
-}
-
-.city {
-  padding: 25px;
-  display: inline-block;
+h1 {
   text-align: center;
-  font-size: 24px;
-  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.931);
-  overflow: hidden;
-  border-radius: 15px;
-  border-top: 2px solid rgba(255, 255, 255, 0.5);
-  border-left: 2px solid rgba(255, 255, 255, 0.5);
-  border-right: 2px solid rgba(255, 255, 255, 0.5);
-  border-bottom: 2px solid rgba(255, 255, 255, 0.5);
-  background-image: linear-gradient(0deg, #84fadc6e 0%, #8fd3f4 100%);
-  height: 90;
-  width: 180px;
-  color:rgb(0, 0, 0);
-  
+  color: rgb(0, 0, 0);
 }
 
-.two {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  box-sizing: border-box;
-  margin: auto;
-  padding: 40px;
-  //background-color: rgba(231, 240, 248, 0.389);
-  
-}
-
-.week {
-  margin: 2.5px;
-  padding: 2.5px;
-  display: flex;
+h4 {
   text-align: center;
-  font-size: 20px;
-  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.931);
-  overflow: hidden;
+  color: blue;
+}
+
+body{
+  display: grid;
+  grid-template-rows: 1fr 8fr 1fr;
+  background-color: brown;
+}
+
+section{
+  background-color: aliceblue;
+}
+
+.prediction{
   border-radius: 15px;
-  border-top: 2px solid rgba(255, 255, 255, 0.5);
-  border-left: 2px solid rgba(255, 255, 255, 0.5);
-  border-right: 2px solid rgba(255, 255, 255, 0.5);
-  border-bottom: 2px solid rgba(255, 255, 255, 0.5);
-  background-image: linear-gradient(0deg, #0006040a 0%, #8fd2f44d 100%);
-  width: 670px;
-  height: 300px;
-  //background-color: rgba(254, 5, 187, 0.138);
-  
+  margin: 5px;
 }
 
-.day {
-  margin: 2.5px;
-  padding: 5px;
-  background-color: rgba(0, 0, 255, 0.232);
-  background-image: linear-gradient(180deg, #85f4fe72 20%, #f4e08f87 80%);
-  border-radius: 15px;
-  width: 90px;
-  height: 290px;
-  color:rgb(0, 0, 0);
-  font-weight: 600;
+#InfoDisplay{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  background-color:rgb(221, 127, 255);
 }
 
-.icon {
-  padding: 15px;
-  text-align: center;
-  font-size: 48px;
-  align-items: center;
-  background-size: cover;
-  //background-color: rgba(0, 0, 0, 0.146);
-  background-repeat: no-repeat;
-  background-position: center;
-  width: 80px;
-  height: 80px;
+#part1{
+  background-color: aquamarine;
 }
 
-.three{
-  background-color: rgb(246, 8, 8);
+#part2{
+  background-color: bisque;
+}
+
+#part3{
+  background-color: cornflowerblue;
 }
 
