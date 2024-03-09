@@ -1,44 +1,63 @@
 
-h1 {
-  text-align: center;
-  color: rgb(0, 0, 0);
-}
-
-h4 {
-  text-align: center;
-  color: blue;
-}
-
 body{
   display: grid;
   grid-template-rows: 1fr 8fr 1fr;
-  background-color: brown;
+  background-image: url(../picture/taipei101/night/taipei101-night-0.jpg);
+  background-size: cover;
 }
 
 section{
-  background-color: aliceblue;
+  background-color: rgba(209, 221, 231, 0.328);
+  border-radius: 15px;
 }
 
 .prediction{
+  display: grid;
+  background-color: rgb(227, 223, 223, 0.04);
+  grid-template-rows: 1fr 4fr 1fr 1fr 1fr 1fr;
   border-radius: 15px;
+  margin: 10px;
+}
+
+.stateimage{
+  display: flex;
+  justify-content: center;
+  border-radius: 15px;
+  background-color: rgb(151, 177, 166, 0.4);
   margin: 5px;
 }
+
+.info{
+  background-color: rgb(151, 177, 166, 0.4);
+  margin: 5px;
+  border-radius: 15px;
+  text-align: center;
+}
+
+.band{
+  color: rgba(240, 248, 255, 0.4);
+  text-align: center;  
+}
+
 
 #InfoDisplay{
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  background-color:rgb(221, 127, 255);
+  background-color:rgba(213, 232, 240, 0.04);
 }
 
+
+
 #part1{
-  background-color: aquamarine;
+  
+  
 }
 
 #part2{
-  background-color: bisque;
+  
 }
 
 #part3{
-  background-color: cornflowerblue;
+  
 }
 

@@ -6,14 +6,14 @@ function apidata(){
     method: "GET",
     datatype:"json",
     success: function(res){
-        console.log(res.records.location[5]);
-        var TaipeiWeatherElement=res.records.location[5].weatherElement;
+        //console.log(res.records.location);
+        var TaipeiWeatherElement=res.records.location[6].weatherElement;
         var Wx = TaipeiWeatherElement[0];
         var PoP = TaipeiWeatherElement[1];
         var MinT = TaipeiWeatherElement[2];
         var CI = TaipeiWeatherElement[3];
         var MaxT = TaipeiWeatherElement[4];
-        //console.log(Wx);
+        console.log(Wx);
         //WeatherDescription(Wx);
         //console.log(PoP);
         //console.log(MinT);
@@ -21,44 +21,228 @@ function apidata(){
         //MinAndMaxTempature(MinT, MaxT);
         //console.log(CI);
         //FeelingDescription(CI);
+        Current();
         Prediction(Wx, MinT, MaxT, CI, PoP);
     }           
     });
 };
 
 
-function WeatherDescription(Wx){
-    for(let i=0;i<3;i++){
-        var WD = document.querySelector("WD"+i);
-        WD.textContent = Wx.time[i].parameter.parameterName;
-        console.log(Wx.time[i].parameter);
+function Current(){
+    var now = new Date();
+    var day = now.getDay(); 
+    var hours = now.getHours();
+    var minutes = now.getMinutes();
+    var t = document.querySelector("cur");
+    var Day;
+    switch(day){
+        case 1:
+            Day = "MONDAY";
+            break;
+        case 2:
+            Day = "TUESDAY";
+            break;
+        case 3:
+            Day = "WEDNESDAY";
+            break;
+        case 4:   
+            Day = "THURSDAY";
+            break;         
+        case 5:  
+            Day = "FRIDAY";
+            break;  
+        case 6:
+            Day = "SATURDAY";
+            break;
+        default:
+            Day = "SUNDAY";  
     }
-}
-function MinAndMaxTempature(MinT, MaxT){
-    for(let i=0;i<3;i++){
-        var MAMT = document.querySelector("MT"+i);
-        MAMT.textContent = MinT.time[i].parameter.parameterName + ' ' +MaxT.time[i].parameter.parameterName;
-        console.log(MinT.time[i].parameter);
-        console.log(MaxT.time[i].parameter);
-    }
-}
-function FeelingDescription(CI){
-    for(let i=0;i<3;i++){
-        var Ci = document.querySelector("CI"+i);
-        Ci.textContent = CI.time[i].parameter.parameterName;
-        console.log(CI.time[i].parameter);
-    }
+    t.textContent = Day + " " + hours + " : " + minutes;
 }
 
 function Prediction(Wx, MinT, MaxT, CI, PoP){
     for(let i=0;i<3;i++){
+        var p = document.querySelector("p"+i);
+        var WDimg = document.createElement("img");
+        WDimg.setAttribute('src', StateImage(Wx.time[i].parameter.parameterName));
+        p.appendChild(WDimg);
+        //WDimg.textContent = document.write("<img src='../picture/sun.svg' width='100' height='100'>");
+        //console.log(StateImage(Wx.time[i].parameter.parameterName))
         var WD = document.querySelector("WD"+i);
         WD.textContent = Wx.time[i].parameter.parameterName;
         var MAMT = document.querySelector("MT"+i);
-        MAMT.textContent = MinT.time[i].parameter.parameterName + ' ' +MaxT.time[i].parameter.parameterName;
+        MAMT.textContent = MinT.time[i].parameter.parameterName + '°C ~ ' +MaxT.time[i].parameter.parameterName+"°C";
         var Ci = document.querySelector("CI"+i);
         Ci.textContent = CI.time[i].parameter.parameterName;
         var POP = document.querySelector("POP"+i);
-        POP.textContent = PoP.time[i].parameter.parameterName;
+        POP.textContent = PoP.time[i].parameter.parameterName+' %';
     }
+}
+
+function StateTime(){
+    var now = new Date();
+    var hour = now.getHours();
+
+}
+function StateImage(description){ 
+    var pic;
+    
+    switch(description){
+        case "晴天":
+            pic="01";
+            break;
+        case "晴時多雲":
+            pic="02";
+            break; 
+        case "多雲時晴":
+            pic="03";
+            break;       
+        case "多雲":
+            pic="04";
+            break;
+        case "多雲時陰":
+            pic="05";
+            break;
+        case "陰時多雲":
+            pic="06";
+            break;
+        case "陰天":
+            pic="07"
+            break;
+        default:
+            break;        
+    }  
+    if(description in ["多雲陣雨","多雲短暫雨","多雲短暫陣雨","午後短暫陣雨","短暫陣雨",
+                    "多雲時晴短暫陣雨","多雲時晴短暫雨","晴時多雲短暫陣雨","晴短暫陣雨","短暫雨"]){
+        pic="08";                
+    }
+    else if(description in ["多雲時陰短暫雨","多雲時陰短暫陣雨"]){
+        pic="09";
+    }
+    else if(description in ["陰時多雲短暫雨","陰時多雲短暫陣雨"]){
+        pic="10";
+    }
+    else if(description in ["雨天","晴午後陰短暫雨","晴午後陰短暫陣雨","陰短暫雨","陰短暫陣雨","陰午後短暫陣雨"]){
+        pic="11";
+    } 
+    else if(description in ["多雲時陰有雨","多雲時陰陣雨","晴時多雲陣雨","多雲時晴陣雨"]){
+        pic="12";
+    }
+    else if(description in ["陰時多雲有雨","陰時多雲有陣雨","陰時多雲陣雨"]){
+        pic="13";
+    }
+    else if(description in ["陰有雨","陰有陣雨","陰雨","陰陣雨","陣雨","午後陣雨","有雨"]){
+        pic="14";
+    }
+    else if(description in ["多雲陣雨或雷雨","多雲短暫陣雨或雷雨","多雲短暫雷陣雨","多雲雷陣雨","短暫陣雨或雷雨後多雲",
+                    "短暫雷陣雨後多雲","短暫陣雨或雷雨","晴時多雲短暫陣雨或雷雨","晴短暫陣雨或雷雨","多雲時晴短暫陣雨或雷雨",
+                    "午後短暫雷陣雨"]){
+        pic="15";
+    }
+    else if(description in ["多雲時陰陣雨或雷雨","多雲時陰短暫陣雨或雷雨","多雲時陰短暫雷陣雨","多雲時陰雷陣雨",
+                    "晴陣雨或雷雨","晴時多雲陣雨或雷雨","多雲時晴陣雨或雷雨"]){
+        pic="16";
+    }
+    else if(description in ["陰時多雲有雷陣雨","陰時多雲陣雨或雷雨","陰時多雲短暫陣雨或雷雨","陰時多雲短暫雷陣雨","陰時多雲雷陣雨","陰有陣雨或雷雨","陰有雷陣雨","陰陣雨或雷雨",
+                    "陰雷陣雨","晴午後陰短暫陣雨或雷雨","晴午後陰短暫雷陣雨","陰短暫陣雨或雷雨","陰短暫雷陣雨","雷雨","陣雨或雷雨後多雲",
+                    "陰陣雨或雷雨後多雲","陰短暫雷陣雨後多雲","陰雷陣雨後多雲","雷陣雨後多雲","陣雨或雷雨","雷陣雨","午後雷陣雨"]){
+        pic="17"
+    }
+    else if(description in ["多雲局部陣雨或雪","多雲時陰有雨或雪","多雲時陰短暫雨或雪","多雲短暫雨或雪","陰有雨或雪","陰時多雲有雨或雪",
+                    "陰時多雲短暫雨或雪","陰短暫雨或雪","多雲時陰有雪","多雲時陰短暫雪","多雲短暫雪","陰有雪","陰時多雲有雪","陰時多雲短暫雪",
+                    "陰短暫雪","有雨或雪","有雨或短暫雪","陰有雨或短暫雪","陰時多雲有雨或短暫雪","多雲時陰有雨或短暫雪","多雲有雨或短暫雪",
+                    "多雲有雨或雪","多雲時晴有雨或雪","晴時多雲有雨或雪","晴有雨或雪","短暫雨或雪","多雲時晴短暫雨或雪","晴時多雲短暫雨或雪",
+                    "晴短暫雨或雪","有雪","多雲有雪","多雲時晴有雪","晴時多雲有雪","晴有雪","短暫雪","多雲時晴短暫雪","晴時多雲短暫雪","晴短暫雪"]){
+        pic="18";
+    }
+    else if(description in ["晴有霧","晴晨霧"]){
+        pic="24";
+    }
+    else if(description in ["晴時多雲有霧","晴時多雲晨霧"]){
+        pic="25";
+    }
+    else if(description in ["多雲時晴有霧","多雲時晴晨霧"]){
+        pic="26";
+    }
+    else if(description in ["多雲有霧","多雲晨霧","有霧","晨霧"]){
+        pic="27";
+    }
+    else if(description in ["陰有霧","陰晨霧","多雲時陰有霧","多雲時陰晨霧","陰時多雲有霧","陰時多雲晨霧"]){
+        pic="28";
+    }
+    else if(description in ["多雲局部雨","多雲局部陣雨","多雲局部短暫雨","多雲局部短暫陣雨"]){
+        pic="29";
+    }
+    else if(description in ["多雲時陰局部雨","多雲時陰局部陣雨",
+                    "多雲時陰局部短暫雨","多雲時陰局部短暫陣雨","晴午後陰局部雨","晴午後陰局部陣雨","晴午後陰局部短暫雨","晴午後陰局部短暫陣雨",
+                    "陰局部雨","陰局部陣雨","陰局部短暫雨","陰局部短暫陣雨","陰時多雲局部雨","陰時多雲局部陣雨","陰時多雲局部短暫雨","陰時多雲局部短暫陣雨"]){
+        pic="30";
+    }
+    else if(description in ["多雲有霧有局部雨","多雲有霧有局部陣雨","多雲有霧有局部短暫雨","多雲有霧有局部短暫陣雨","多雲有霧有陣雨","多雲有霧有短暫雨",
+                    "多雲有霧有短暫陣雨","多雲局部雨有霧","多雲局部雨晨霧","多雲局部陣雨有霧","多雲局部陣雨晨霧","多雲局部短暫雨有霧","多雲局部短暫雨晨霧",
+                    "多雲局部短暫陣雨有霧","多雲局部短暫陣雨晨霧","多雲陣雨有霧","多雲短暫雨有霧","多雲短暫雨晨霧","多雲短暫陣雨有霧","多雲短暫陣雨晨霧",
+                    "有霧有短暫雨","有霧有短暫陣雨"]){ 
+        pic="31";   
+    }
+    else if(description in ["多雲時陰有霧有局部雨","多雲時陰有霧有局部陣雨","多雲時陰有霧有局部短暫雨","多雲時陰有霧有局部短暫陣雨",
+                    "多雲時陰有霧有陣雨","多雲時陰有霧有短暫雨","多雲時陰有霧有短暫陣雨","多雲時陰局部雨有霧","多雲時陰局部陣雨有霧","多雲時陰局部短暫雨有霧",
+                    "多雲時陰局部短暫陣雨有霧","多雲時陰陣雨有霧","多雲時陰短暫雨有霧","多雲時陰短暫雨晨霧","多雲時陰短暫陣雨有霧","多雲時陰短暫陣雨晨霧",
+                    "陰有霧有陣雨","陰局部雨有霧","陰局部陣雨有霧","陰局部短暫陣雨有霧","陰時多雲有霧有局部雨","陰時多雲有霧有局部陣雨","陰時多雲有霧有局部短暫雨",
+                    "陰時多雲有霧有局部短暫陣雨","陰時多雲有霧有陣雨","陰時多雲有霧有短暫雨","陰時多雲有霧有短暫陣雨","陰時多雲局部雨有霧","陰時多雲局部陣雨有霧",
+                    "陰時多雲局部短暫雨有霧","陰時多雲局部短暫陣雨有霧","陰時多雲陣雨有霧","陰時多雲短暫雨有霧","陰時多雲短暫雨晨霧","陰時多雲短暫陣雨有霧",
+                    "陰時多雲短暫陣雨晨霧","陰陣雨有霧","陰短暫雨有霧","陰短暫雨晨霧","陰短暫陣雨有霧","陰短暫陣雨晨霧"]){
+        pic="32";
+    }
+    else if(description in ["多雲局部陣雨或雷雨","多雲局部短暫陣雨或雷雨","多雲局部短暫雷陣雨","多雲局部雷陣雨"]){
+        pic="33";
+    }
+    else if(description in ["多雲時陰局部陣雨或雷雨","多雲時陰局部短暫陣雨或雷雨",
+                    "多雲時陰局部短暫雷陣雨","多雲時陰局部雷陣雨","晴午後陰局部陣雨或雷雨","晴午後陰局部短暫陣雨或雷雨","晴午後陰局部短暫雷陣雨","晴午後陰局部雷陣雨",
+                    "陰局部陣雨或雷雨","陰局部短暫陣雨或雷雨","陰局部短暫雷陣雨","陰局部雷陣雨","陰時多雲局部陣雨或雷雨","陰時多雲局部短暫陣雨或雷雨","陰時多雲局部短暫雷陣雨",
+                    "陰時多雲局部雷陣雨"]){
+        pic="34";   
+    }
+    else if(description in ["多雲有陣雨或雷雨有霧","多雲有雷陣雨有霧","多雲有霧有陣雨或雷雨","多雲有霧有雷陣雨","多雲局部陣雨或雷雨有霧","多雲局部短暫陣雨或雷雨有霧",
+                    "多雲局部短暫雷陣雨有霧","多雲局部雷陣雨有霧","多雲陣雨或雷雨有霧","多雲短暫陣雨或雷雨有霧","多雲短暫雷陣雨有霧","多雲雷陣雨有霧","多雲時晴短暫陣雨或雷雨有霧"]){
+        pic="35";
+    }
+    else if(description in ["多雲時陰有陣雨或雷雨有霧","多雲時陰有雷陣雨有霧","多雲時陰有霧有陣雨或雷雨","多雲時陰有霧有雷陣雨","多雲時陰局部陣雨或雷雨有霧","多雲時陰局部短暫陣雨或雷雨有霧",
+                    "多雲時陰局部短暫雷陣雨有霧","多雲時陰局部雷陣雨有霧","多雲時陰陣雨或雷雨有霧","多雲時陰短暫陣雨或雷雨有霧","多雲時陰短暫雷陣雨有霧","多雲時陰雷陣雨有霧",
+                    "陰局部陣雨或雷雨有霧","陰局部短暫陣雨或雷雨有霧","陰局部短暫雷陣雨有霧","陰局部雷陣雨有霧","陰時多雲有陣雨或雷雨有霧","陰時多雲有雷陣雨有霧",
+                    "陰時多雲有霧有陣雨或雷雨","陰時多雲有霧有雷陣雨","陰時多雲局部陣雨或雷雨有霧","陰時多雲局部短暫陣雨或雷雨有霧","陰時多雲局部短暫雷陣雨有霧",
+                    "陰時多雲局部雷陣雨有霧","陰時多雲陣雨或雷雨有霧","陰時多雲短暫陣雨或雷雨有霧","陰時多雲短暫雷陣雨有霧","陰時多雲雷陣雨有霧","陰短暫陣雨或雷雨有霧",
+                    "陰短暫雷陣雨有霧","雷陣雨有霧"]){
+        pic="36";
+    }
+    else if(description in ["短暫陣雨有霧","短暫陣雨晨霧","短暫雨有霧","短暫雨晨霧"]){
+        pic="38";
+    }
+    else if(description in ["有雨有霧", "陣雨有霧"]){
+        pic="39";
+    }
+    else if(description in ["短暫陣雨或雷雨有霧","陣雨或雷雨有霧"]){
+        pic="41";
+    }
+    else if(description in ["晴午後多雲局部雨","晴午後多雲局部陣雨","晴午後多雲局部短暫雨","晴午後多雲局部短暫陣雨","晴午後多雲短暫雨","晴午後多雲短暫陣雨","晴午後局部雨",
+                    "晴午後局部陣雨","晴午後局部短暫雨","晴午後局部短暫陣雨","晴午後陣雨","晴午後短暫雨","晴午後短暫陣雨","晴時多雲午後短暫陣雨"]){
+        pic="19";
+    }
+    else if(description in ["多雲午後局部雨","多雲午後局部陣雨","多雲午後局部短暫雨","多雲午後局部短暫陣雨","多雲午後陣雨","多雲午後短暫雨","多雲午後短暫陣雨","多雲時陰午後短暫陣雨",
+                    "陰時多雲午後短暫陣雨","多雲時晴午後短暫陣雨"]){
+        pic="20";
+    }
+    else if(description in ["晴午後多雲陣雨或雷雨","晴午後多雲雷陣雨","晴午後陣雨或雷雨","晴午後雷陣雨","晴午後多雲局部陣雨或雷雨","晴午後多雲局部短暫陣雨或雷雨","晴午後多雲局部短暫雷陣雨",
+                    "晴午後多雲局部雷陣雨","晴午後多雲短暫陣雨或雷雨","晴午後多雲短暫雷陣雨","晴午後局部短暫雷陣雨","晴午後局部雷陣雨","晴午後短暫雷陣雨","晴雷陣雨","晴時多雲雷陣雨","晴時多雲午後短暫雷陣雨"]){
+        pic="21";
+    }
+    else if(description in ["多雲午後局部陣雨或雷雨","多雲午後局部短暫陣雨或雷雨","多雲午後局部短暫雷陣雨","多雲午後局部雷陣雨","多雲午後陣雨或雷雨","多雲午後短暫陣雨或雷雨","多雲午後短暫雷陣雨","多雲午後雷陣雨",
+                    "多雲午後雷陣雨","多雲時晴雷陣雨","多雲時晴午後短暫雷陣雨","多雲時陰午後短暫雷陣雨","陰時多雲午後短暫雷陣雨","陰午後短暫雷陣雨"]){
+        pic="22";
+                    }
+    else if(description in ["下雪","積冰","暴風雪"]) { //雪
+        pic="42";
+    }
+    var path = '../picture/weathericon/day/'+pic+'.svg';
+    return path;
+    
 }
