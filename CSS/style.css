@@ -4,6 +4,7 @@ body{
   grid-template-rows: 1fr 8fr 1fr;
   background-image: url(../picture/taipei101/night/taipei101-night-0.jpg);
   background-size: cover;
+  background-repeat: no-repeat;
 }
 
 section{
