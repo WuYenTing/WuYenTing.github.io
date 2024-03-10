@@ -1,39 +1,55 @@
 apidata();
+currentweather();
 var WeatherAPIurl = "https://opendata.cwa.gov.tw/api/v1/rest/datastore/F-C0032-001?Authorization=CWA-190C6DAA-84DC-4F95-A31D-BA4B80F4CC85"
 function apidata(){
-    $.ajax({
-    url: "https://opendata.cwa.gov.tw/api/v1/rest/datastore/F-C0032-001?Authorization=CWA-190C6DAA-84DC-4F95-A31D-BA4B80F4CC85",
-    method: "GET",
-    datatype:"json",
-    success: function(res){
-        //console.log(res.records.location);
-        var TaipeiWeatherElement=res.records.location[6].weatherElement;
-        var Wx = TaipeiWeatherElement[0];
-        var PoP = TaipeiWeatherElement[1];
-        var MinT = TaipeiWeatherElement[2];
-        var CI = TaipeiWeatherElement[3];
-        var MaxT = TaipeiWeatherElement[4];
-        console.log(Wx);
-        //WeatherDescription(Wx);
-        //console.log(PoP);
-        //console.log(MinT);
-        //console.log(MaxT);
-        //MinAndMaxTempature(MinT, MaxT);
-        //console.log(CI);
-        //FeelingDescription(CI);
-        Current();
-        Prediction(Wx, MinT, MaxT, CI, PoP);
-    }           
-    });
+    $.ajax(
+        {
+            url: "https://opendata.cwa.gov.tw/api/v1/rest/datastore/F-C0032-001?Authorization=CWA-190C6DAA-84DC-4F95-A31D-BA4B80F4CC85",
+            method: "GET",
+            datatype:"json",
+            success: function(res){
+                //console.log(res.records.location);
+                var TaipeiWeatherElement=res.records.location[6].weatherElement;
+                var Wx = TaipeiWeatherElement[0];
+                var PoP = TaipeiWeatherElement[1];
+                var MinT = TaipeiWeatherElement[2];
+                var CI = TaipeiWeatherElement[3];
+                var MaxT = TaipeiWeatherElement[4];
+                console.log(Wx);
+                //WeatherDescription(Wx);
+                //console.log(PoP);
+                //console.log(MinT);
+                //console.log(MaxT);
+                //MinAndMaxTempature(MinT, MaxT);
+                //console.log(CI);
+                //FeelingDescription(CI);
+                Current();
+                Prediction(Wx, MinT, MaxT, CI, PoP);
+            }
+        }               
+    );
 };
-
+function currentweather(){
+    $.ajax(
+        {
+            url: "https://opendata.cwa.gov.tw/api/v1/rest/datastore/O-A0003-001?Authorization=CWA-190C6DAA-84DC-4F95-A31D-BA4B80F4CC85",
+            method: "GET",
+            datatype:"json",
+            success: function(res){
+                var data = res.records.Station;
+                console.log(res.records.Station);
+                currstate(data);
+            }
+        }
+    )
+}
 
 function Current(){
     var now = new Date();
     var day = now.getDay(); 
     var hours = now.getHours();
     var minutes = now.getMinutes();
-    var t = document.querySelector("cur");
+    var t = document.querySelector("curTime");
     var Day;
     switch(day){
         case 1:
@@ -90,17 +106,15 @@ function Prediction(Wx, MinT, MaxT, CI, PoP){
     }
 }
 
-function StateTime(){
-    var now = new Date();
-    var hour = now.getHours();
-
-}
 function StateImage(description){ 
     var pic;
     switch(description){
         case "晴天":
             pic="01";
             break;
+        case "晴":
+            pic="01";
+            break;    
         case "晴時多雲":
             pic="02";
             break; 
@@ -255,6 +269,16 @@ function StateImage(description){
         console.log("ERROR");
     }
     var path = '../picture/weathericon/day/'+pic+'.svg';
-    return path;
-    
+    return path;   
+}
+
+function currstate(data){
+    var t = document.querySelector("curTemp");
+    t.textContent = data[13].WeatherElement.AirTemperature + "°C";
+    var l = document.querySelector("location");
+    l.textContent = data[13].StationName;
+    console.log(data[13].StationName);
+    var p = document.querySelector("curimg");
+    p.textContent = data[13].WeatherElement.Weather;
+    console.log(data[13].WeatherElement.Weather);
 }

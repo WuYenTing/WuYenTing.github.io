@@ -1,7 +1,7 @@
 
 body{
   display: grid;
-  grid-template-rows: 1fr 8fr 1fr;
+  grid-template-rows: 1fr 3fr 6fr 1fr;
   //background-image: url(../picture/taipei101/night/taipei101-night-0.jpg);
   background-size: cover;
   background-repeat: no-repeat;
@@ -36,8 +36,7 @@ section{
 }
 
 .band{
-  background-color: rgba(213, 232, 240, 0.965);
-  text-align: center;  
+  background-color: rgba(213, 232, 240, 0.965);  
 }
 
 
@@ -47,7 +46,100 @@ section{
   background-color:rgba(213, 232, 240, 0.965);
 }
 
+.curInfo{
+  display: grid;
+  grid-template-rows: 5fr 2fr;
+  background-color:rgba(213, 232, 240, 0.965);
+}
 
+.curInfoDisplay{
+  background-color:rgba(191, 197, 200, 0.885);
+  margin: 5px;
+}
+
+.maindata1{
+  background-color:rgba(191, 197, 200, 0.885);
+  border-radius: 15px;
+  margin: 5px;
+}
+
+.maindata2{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  background-color:rgba(200, 195, 191, 0.885);
+  border-radius: 15px;
+  margin: 5px;
+}
+
+.otherdata{
+  background-color:rgba(191, 197, 200, 0.885);
+  border-radius: 15px;
+  margin: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 36px;
+}
+
+#Time{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 72px;
+}
+
+#main{
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  background-color:rgba(21, 169, 243, 0.885);
+  margin: 5px;
+}
+
+#tempature{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 96px;
+}
+
+#curInfo{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  background-color:rgba(65, 98, 114, 0.885);
+  font-size: 96px;
+  
+}
+
+#curlocation{
+  background-color:rgba(164, 172, 176, 0.885);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 5px;
+  font-size: 96px;
+  border-radius: 15px;
+}
+
+#curWeatherimg{
+  background-color:rgba(136, 162, 177, 0.885);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 5px;
+  font-size: 84px;
+  border-radius: 15px;
+}
+
+#curTemp{
+  
+}
+
+#detail{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  background-color:rgba(21, 169, 243, 0.885);
+  margin: 5px;
+}
 
 #part1{
   
@@ -60,5 +152,9 @@ section{
 
 #part3{
   
+}
+
+#end{
+
 }
 

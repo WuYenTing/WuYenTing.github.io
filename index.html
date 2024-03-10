@@ -7,10 +7,43 @@
     </head> 
     <body>
         <section class="band">
-            <div >
-                <h1><cur></cur></h1>
+            <div id="Time">
+                <curTime></curTime>
             </div>    
         </section>
+        <section class="curInfo">
+            <section id="main" class="curInfoDisplay">
+                <section id="tempature", class="maindata1">
+                    <curTemp></curTemp>
+                </section>
+                <section id="curInfo", class="maindata2">
+                    <div id="curWeatherimg">
+                        <curimg></curimg>
+                    </div>
+                    <div id="curlocation">
+                        <location></location>
+                    </div>
+                </section>
+            </section>
+            <section id="detail" class="curInfoDisplay">
+                <div id="windspeed", class="otherdata">
+                    <img src="picture/weathericon/wind.png", height="48">
+                    <windspeed>windspeed</windspeed>
+                </div>
+                <div id="winddirection", class="otherdata">
+                    <img src="picture/weathericon/winddirection.png", height="48">
+                    <winddirection>direction</winddirection>
+                </div>    
+                <div id="humidity", class="otherdata">
+                    <img src="picture/weathericon/humidity.png", height="48">
+                    <humidity>humidity</humidity>
+                </div>
+                <div id="uvindex", class="otherdata">
+                    <img src="picture/weathericon/uv.png", height="48">
+                    <uvi>uvi</uvi>
+                </div>
+            </section>    
+        </section>    
         <section class="InfoDisplay">
             <div id="part1", class="prediction">
                 <div class="info">
@@ -75,7 +108,7 @@
         </section>
         <section class="band">
             <div>
-                <h1>end</h1>
+                <end></end>
             </div>
         </section>        
     </body>  
