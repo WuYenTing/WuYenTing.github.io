@@ -36,6 +36,9 @@ section{
 }
 
 .band{
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background-color: rgba(213, 232, 240, 0.965);  
 }
 

@@ -83,8 +83,9 @@ function Prediction(Wx, MinT, MaxT, CI, PoP){
     for(let i=0;i<3;i++){
         var now = new Date();
         var hours = now.getHours();
+        //console.log(hours);
         var T = document.querySelector("T"+i);
-        if( 6 <= hours && hours <= 18 ){           
+        if( 6 <= hours && hours < 18 ){           
             T.textContent = day[i];
         }
         else{
@@ -281,4 +282,15 @@ function currstate(data){
     var p = document.querySelector("curimg");
     p.textContent = data[13].WeatherElement.Weather;
     console.log(data[13].WeatherElement.Weather);
+    var wdsp = document.querySelector("windspeed");
+    wdsp.textContent = data[13].WeatherElement.WindSpeed + "m/s";
+    var wddir = document.querySelector("winddirection");
+    wddir.textContent = data[13].WeatherElement.WindDirection;
+    var hum = document.querySelector("humidity");
+    hum.textContent = data[13].WeatherElement.RelativeHumidity + "%";
+    var uvi = document.querySelector("uvi");
+    uvi.textContent = data[13].WeatherElement.UVIndex + "級";
+    
+    
+    
 }
