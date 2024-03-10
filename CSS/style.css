@@ -23,6 +23,7 @@ section{
 .stateimage{
   display: flex;
   justify-content: center;
+  align-items: center;
   border-radius: 15px;
   background-color: rgb(151, 177, 166, 0.4);
   margin: 5px;

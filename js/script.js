@@ -95,6 +95,8 @@ function Prediction(Wx, MinT, MaxT, CI, PoP){
         var p = document.querySelector("p"+i);
         var WDimg = document.createElement("img");
         WDimg.setAttribute('src', StateImage(Wx.time[i].parameter.parameterName));
+        //WDimg.setAttribute('height', 72);
+        //WDimg.setAttribute('width', 72);
         p.appendChild(WDimg);
         var WD = document.querySelector("WD"+i);
         WD.textContent = Wx.time[i].parameter.parameterName;
