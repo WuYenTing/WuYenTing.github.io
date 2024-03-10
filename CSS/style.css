@@ -2,7 +2,7 @@
 body{
   display: grid;
   grid-template-rows: 1fr 8fr 1fr;
-  background-image: url(../picture/taipei101/night/taipei101-night-0.jpg);
+  //background-image: url(../picture/taipei101/night/taipei101-night-0.jpg);
   background-size: cover;
   background-repeat: no-repeat;
 }
@@ -14,8 +14,8 @@ section{
 
 .prediction{
   display: grid;
-  background-color: rgb(227, 223, 223, 0.04);
-  grid-template-rows: 1fr 4fr 1fr 1fr 1fr 1fr;
+  background-color: rgba(227, 223, 223, 0.465);
+  grid-template-rows: 1fr 4fr 3fr;
   border-radius: 15px;
   margin: 10px;
 }
@@ -36,15 +36,15 @@ section{
 }
 
 .band{
-  color: rgba(240, 248, 255, 0.4);
+  background-color: rgba(213, 232, 240, 0.965);
   text-align: center;  
 }
 
 
-#InfoDisplay{
+.InfoDisplay{
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  background-color:rgba(213, 232, 240, 0.04);
+  background-color:rgba(213, 232, 240, 0.965);
 }
 
 
